@@ -53,7 +53,7 @@ describe("Webdriverio main page", () => {
         await browser.pause(4000)
     });  
     
-    it("should show getAttribute command", async () => {
+    xit("should show getAttribute command", async () => {
         await browser.url('https://dou.ua/search');
 
         let inputSearch = await $('#gsc-i-id1')
@@ -66,4 +66,22 @@ describe("Webdriverio main page", () => {
         console.log("Value attribute is: " + attr) // outputs: Cat
     });
     
+    xit("should show getLocation command", async () => {
+        await browser.url('https://dou.ua');
+
+        let inputSearch = await $('#txtGlobalSearch')
+        let location = await inputSearch.getLocation()
+        console.log("Location is: " + location) // outputs: x. y
+
+        let xLocation = await inputSearch.getLocation("x")
+        console.log("Location by x is: " + xLocation) // outputs: x
+    });
+
+    it("should show getText command", async () => {
+        await browser.url('https://webdriver.io');
+
+        let sub_title = await $('.hero__subtitle')
+        console.log("Subtitle text is: " + await sub_title.getText()) // outputs: Next-gen browser...
+    });
+
 });
